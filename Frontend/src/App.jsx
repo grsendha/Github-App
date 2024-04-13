@@ -1,8 +1,26 @@
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+import ExplorePage from "./pages/ExplorePage";
+import LikesPage from "./pages/LikesPage";
+
+import Sidebar from "./components/Sidebar";
 function App() {
   return (
-    <>
-      <h1>Hello</h1>
-    </>
+    <div className="flex ">
+      <Sidebar />
+      <div className="max-w-5xl my-5 text-white ">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/signin" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/likes" element={<LikesPage />} />
+        </Routes>
+      </div>
+    </div>
   );
 }
 
