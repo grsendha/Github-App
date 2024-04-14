@@ -24,6 +24,7 @@ const HomePage = () => {
       const repos = await responseRepos.json();
       console.log("REPOS", repos);
       console.log("PROFILE", userProfile);
+      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       setRepos(repos);
       return { userProfile, repos };
     } catch (error) {
@@ -46,6 +47,7 @@ const HomePage = () => {
     const { userProfile, repos } = await getUserProfileAndRepos(username);
     setUserProfile(userProfile);
     setRepos(repos);
+    setSortType("recent");
     setLoading(false);
   };
 
