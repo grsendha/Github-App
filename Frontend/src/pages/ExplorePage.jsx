@@ -12,9 +12,9 @@ const ExplorePage = () => {
     setLoading(true);
     setRepos([]);
     try {
-      const data = await fetch(
-        `http://localhost:4001/api/explore/repos/${language}`
-      ).then((response) => response.json());
+      const data = await fetch(`/api/explore/repos/${language}`).then(
+        (response) => response.json()
+      );
 
       setRepos(data.items);
       setSelectedLanguage(language);

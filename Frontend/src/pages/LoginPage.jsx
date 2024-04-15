@@ -1,6 +1,7 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { handleLoginWithGithub } from "../lib/function";
 
 const LoginPage = () => {
   return (
@@ -11,6 +12,7 @@ const LoginPage = () => {
             Login to your account
           </h1>
           <button
+            onClick={handleLoginWithGithub}
             type="button"
             className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 
         focus:outline-none focus:ring-[#24292F]/50 

@@ -17,7 +17,7 @@ const HomePage = () => {
     setLoading(true);
     try {
       const { userProfile, repos } = await fetch(
-        `http://localhost:4001/api/users/profile/${username}`
+        `/api/users/profile/${username}`
       ).then((response) => response.json());
 
       repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
