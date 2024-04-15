@@ -12,15 +12,10 @@ const ExplorePage = () => {
     setLoading(true);
     setRepos([]);
     try {
-      const response = await fetch(
-        `https://api.github.com/search/repositories?q=language:${language}&sort=stars&order=desc&per_page=10`,
-        {
-          headers: {
-            authorization: `token ${import.meta.env.REACT_APP_GITHUB_TOKEN}`,
-          },
-        }
-      );
-      const data = await response.json();
+      const data = await fetch(
+        `http://localhost:4001/api/explore/repos/${language}`
+      ).then((response) => response.json());
+
       setRepos(data.items);
       setSelectedLanguage(language);
     } catch (error) {
