@@ -1,8 +1,11 @@
 import express from "express";
 import userRoutes from "./routes/user.route.js";
 import exploreRoutes from "./routes/explore.route.js";
+import authRoutes from "./routes/auth.route.js";
 import { PORT } from "./config/serverConfig.js";
 import cors from "cors";
+
+import connectMongoDB from "./database/connectDatabase.js";
 
 const app = express();
 
@@ -16,7 +19,9 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/explore", exploreRoutes);
+app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  connectMongoDB();
 });
