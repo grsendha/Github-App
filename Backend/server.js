@@ -7,8 +7,10 @@ import cors from "cors";
 import "./passport/auth.passport.js";
 import passport from "passport";
 import session from "express-session";
+import path from "path";
 
 import connectMongoDB from "./database/connectDatabase.js";
+const __dirname = path.resolve();
 
 const app = express();
 
@@ -21,8 +23,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
 app.use("/api/users", userRoutes);
